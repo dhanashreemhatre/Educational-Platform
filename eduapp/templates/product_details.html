@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{%block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<section id="product_details" class="">
+
+    <div class="container-fluid product_details_head p-2">
+        <div class="mx-2">
+            <span>Home</span>	&#62; <span>Category</span> &#62; <span>{{product_details.product.category}}</span>
+        </div>
+        <div class="m-20">
+            <h1 class="text-capitalize">{{product_details.product}}</h1>
+            <!-- <h2>{{product_details.duration}}</h2> -->
+            <div class="d-flex m-3"><img class="userlogo" src="{{product_details.product.author.profile_pic.url}}" alt="">
+                <a href="{% url 'profile' %}" class="cl-blue text-decoration-none">{{product_details.product.author.name}}</a>
+            </div>
+            
+            
+        </div>
+    </div>
+
+
+    <div class="row g-5 m-3">
+        <!-- left side of details -->
+        <div id="overview" class="container p-4 col-lg-8">
+            <div class="head">Overview</div>
+            <div class="container">
+                <div class="head my-3">Course Description</div>
+                {% if product_details.description %}
+                <p>{{product_details.description|safe}}</p>
+                {% else %}
+                <p>No description available for this course</p>
+                {% endif %}
+            </div>
+            <div class="container">
+                <div class="head my-3">Course Requirements</div>
+                {% if product_details.requirements %}
+                <p>{{product_details.requirements|safe}}</p>
+                {% else %}
+                <p>No description available for this course</p>
+                {% endif %}
+            </div>
+            <div class="container">
+                <div class="head my-3">Course topics</div>
+                {% if product_details.topics %}
+                <p>{{product_details.topics|safe}}</p>
+                {% else %}
+                <p>No description available for this course</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- right side of detail -->
+        <div id="detail-right" class="col-lg-3">
+            <div class="card p-3 mb-4">
+                <div> Call us for course related queries</div>
+                <p>+91 9311746545</p>
+                {% if request.user.is_authenticated %}
+            <a href="{% url 'enrollmentForm' product_details.id %}"><button class="btn btn-lg btn-custom-dark">Enroll
+                    Now</button></a>
+            {% else %}
+            <a href="{% url 'login' %}?next={% url 'enrollmentForm' product_details.id %}"><button class="btn btn-lg btn-custom-dark">Enroll Now</button></a>
+            {% endif %}
+            </div>
+            <div class="card p-3">
+                <div class="head mb-2">Features:</div>
+                {% if product_details.description %} 
+                <p><span>lecture:</span> {{product_details.lecture}}</p>
+                <hr>
+                <p><span>assignment:</span> {{product_details.assignment}}</p>
+                <hr>
+                <p><span>test:</span> {{product_details.test}}</p>
+                <hr>
+                <p><span>duration:</span> {{product_details.duration}}</p>
+                <hr>
+                <p><span>Price:</span> {{product_details.product.price}}</p>
+                {% endif %}
+            </div>
+            
+        </div>
+       
+    </div>
+
+
+</section>
+
+{% endblock %}

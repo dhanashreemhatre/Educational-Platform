@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Courses-Best online Learning platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@600&family=Fasthand&family=Ubuntu:wght@400;500;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  
+  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/39.2.0/classic/ckeditor.css">
+  <style>
+    
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand nav-logo" href="/"><img src="{% static 'images/logo.png' %}" alt="" class="img-fluid"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-lg-0">
+          <li class="nav-item dropdown border rounded nav-dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              All Categories
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for c in categories %}
+              <li>
+                <a class="dropdown-item" href="{{c.get_absolute_url}}">{{c.name}}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'displayQuestions' %}">Ask Doubts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">Trainer's Profile</a>
+          </li>
+
+        </ul>
+        <form class="d-flex" action="{% url 'search_results' %}" method="get">
+          <div class="input-group" id="search">
+            <input class="form-control me-auto" type="search" placeholder="Search" aria-label="Search" name="q">
+            <button id="search-button" type="submit" class="btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+        {% if request.user.is_authenticated %}
+        <div class="dropdown mx-2">
+          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user cl-blue"></i>
+          <span>{{request.user}}</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="{% url 'userProfile' %}"> Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div>
+        
+        {% else %}
+        <a href="{% url 'login' %}?next={{request.path}}" class="m-2 nav-link"><i class="fa-solid fa-user"></i><span> Sign In</span></a>
+        {% endif %}
+        
+        
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+  {%block content %}
+  <div class="container-fluid">
+
+  </div>
+  {% endblock %}
+
+
+ 
+    <footer>
+      <div class="container-fluid bg-dark p-5 text-white">
+      <div class="row">
+        <div class="col-lg-3 col-md-3">
+          <h5>Categories</h5>
+          <ul class="nav flex-column">
+            
+            {% for i in categories %}
+            <li class="nav-item mb-2"><a href="{{i.get_absolute_url}}" class="nav-link p-0 text-muted">{{i.name}}</a></li>
+            {% endfor%}
+          </ul>
+        </div>
+  
+        <div class="col-lg-3 col-md-3">
+          <h5>Section</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          </ul>
+        </div>
+  
+       
+        <div class="col-lg-4 col-md-4 offset-lg-1">
+          <form>
+            <h5>Subscribe to our newsletter</h5>
+            <p>Monthly digest of whats new and exciting from us.</p>
+            <div class="d-flex flex-md-row flex-lg-row flex-column w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">Email address</label>
+              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+              <button class="btn btn-pink" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <div class="d-flex  flex-lg-row flex-md-row flex-column justify-content-between py-4 my-4 border-top">
+        <p>&copy; 2021 Company, Inc. All rights reserved.</p>
+        <ul class="list-unstyled d-flex ">
+          <li class="ms-3"><i class="fa-brands fa-instagram"></i></li>
+          <li class="ms-3"><i class="fa-brands fa-facebook"></i></li>
+          <li class="ms-3"><i class="fa-brands fa-linkedin"></i></li>
+        </ul>
+      </div>
+    </div>
+    </footer>
+
+<!-- ckeditor and bootstrap scripts -->
+
+  <script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+  <script>
+    CKEDITOR.replace('id_query');
+    CKEDITOR.replace('id_ans');  // Replace 'id_content' with the actual ID of your CKEditor field
+
+document.addEventListener("DOMContentLoaded", function() {
+    const upvoteIcons = document.querySelectorAll('[id^="upvote-icon-"]');
+
+    upvoteIcons.forEach(icon => {
+        icon.addEventListener("click", function() {
+            const answerId = icon.id.split("-")[2]; // Extract the answer ID from the icon's ID
+            upvoteAnswer(answerId, icon);
+        });
+    });
+
+    function upvoteAnswer(answerId, icon) {
+        const csrftoken = getCookie('csrftoken');
+        const isUserUpvoted = icon.classList.contains("upvoted");
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'upvote_answer' %}",
+            data: { answer_id: answerId },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            },
+            success: function(response) {
+                const upvoteCountElement = document.querySelector(`#Upvote-count-${answerId}`);
+                upvoteCountElement.textContent = response.upvote_count;
+
+                // Toggle the upvoted class and remove the upvote if already upvoted
+                icon.classList.toggle("fa-solid", !isUserUpvoted);
+
+                // Optionally, you can show a confirmation message here
+                
+            }
+        });
+    }
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+            const cookies = document.cookie.split(";");
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === name + "=") {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+
+function moveToSelected(element) {
+
+if (element == "next") {
+  var selected = $(".selected").next();
+} else if (element == "prev") {
+  var selected = $(".selected").prev();
+} else {
+  var selected = element;
+}
+
+var next = $(selected).next();
+var prev = $(selected).prev();
+var prevSecond = $(prev).prev();
+var nextSecond = $(next).next();
+
+$(selected).removeClass().addClass("selected");
+
+$(prev).removeClass().addClass("prev");
+$(next).removeClass().addClass("next");
+
+$(nextSecond).removeClass().addClass("nextRightSecond");
+$(prevSecond).removeClass().addClass("prevLeftSecond");
+
+$(nextSecond).nextAll().removeClass().addClass('hideRight');
+$(prevSecond).prevAll().removeClass().addClass('hideLeft');
+
+}
+
+// Eventos teclado
+$(document).keydown(function(e) {
+  switch(e.which) {
+      case 37: // left
+      moveToSelected('prev');
+      break;
+
+      case 39: // right
+      moveToSelected('next');
+      break;
+
+      default: return;
+  }
+  e.preventDefault();
+});
+
+$('#carousel div').click(function() {
+moveToSelected($(this));
+});
+
+$('#prev').click(function() {
+moveToSelected('prev');
+});
+
+$('#next').click(function() {
+moveToSelected('next');
+});
+
+
+</script>
+
+</body>
+
+</html>

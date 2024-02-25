@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{%block content %}
+{% load static %}
+
+<style>
+  .not-visible {
+    display: none;
+  }
+</style>
+<div class="" id="head">
+
+<!--Section carousel start-->
+{% block slide %}
+<section class="slide mt-3">
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+      <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      
+      {% for images in courselImage %}
+      <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+        <img style="width: 100%; height: 600px;" src="{{images.image.url}}" alt="Slide 1">
+        <div class="carousel-caption" style="text-align: right; top: 20%; ">
+          <h1 class="text-center" style="color: #01796F; font-weight: bold; font-size: 65px; margin-left: 58%; font-family: serif;">{{images.title}}</h1>
+          <div class="col-md-6"  style="margin-left: 55%;">
+          <p class=" text-center" style="color: #121010;">{{images.sub_title}}</p>
+          </div>
+          <a href="{% url 'register' %}"><button class="btn btn-custom-dark" style="font-weight: bold; color: #fdfcfc; margin-right: 11%; width: 18%;">Get Started</button></a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+</section>
+{% endblock slide %}
+<!--Section carousel end-->
+
+  <section id="categories" class="container-fluid">
+    <div class="container">
+      <div class="mb-4">
+        <b><h3 class="text-capitalize">Explore Courses <span class="cl-blue">Categories</span></h3></b>
+        <hr>
+        <p>Find out popular course categories and enroll to your desired course.</p>
+      </div>
+      <div class="row g-4" >
+
+        {% for i in cat %}
+        <div class="col-lg-3 col-md-6 category text-center course-item">
+          <a href="{{i.get_absolute_url}}" class="card">
+            <img src="{{i.image.url}}" alt=""></img>
+            <div class="text-capitalize cl-blue">{{i.name}}</div>
+          </a>
+        </div>
+        {% endfor %}
+        <div class="text-center">
+          <button class="btn view-more m-4 btn-custom-dark">View More</button>
+          <button class="btn view-less m-4 btn-custom-dark" style="display: none;">View Less</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-fluid my-4">
+    <div class="container">
+      <div class="mb-4">
+        <b><h3 class="text-capitalize">Explore <span class="cl-blue">Top Courses</span></h3></b>
+        <hr>
+        <p>Courses that make you achieve your goal in a short time.</p>
+      </div>
+      <div class="row g-4" >
+
+        {% for i in products %}
+        <div class="col-lg-3 col-md-6 product text-center">
+          <a href="{{i.get_absolute_url}}" class="card">
+            <img src="{{i.image.url}}" alt=""></img>
+            <div class="text-capitalize cl-blue my-2">{{i.name}}</div>
+            <button class="btn btn-custom-dark w-50 m-2">View Course</button>
+          </a>
+        </div>
+        {% endfor %}
+        
+      </div>
+    </div>
+  </section>
+
+
+  
+  <div class="container-fluid mt-20 get-started">
+    <b><h2>Start online learning</h2></b>
+    <h1>Enhance your skills</h1>
+    <a href="{% url 'contact' %}"><button>Contact us</button></a>
+
+  </div>
+
+  <section class="features pt-5">
+    <h1>Why Us?</h1>
+    <p>Your One Stop Destination For Success</p>
+
+    <div class="p-4 text-start container">
+      <div class="feature-card m-4 card-1">
+        <div class="d-flex justify-content-center align-items-center">
+          <img src="{% static 'images/414342-PDTRP3-756.jpg' %}" alt="" class="img-fluid">
+        <div class="px-4">
+          <h3 class="cl-blue">Structured And Targeted Study Material</h3>
+        <p>Explore the art of concept with our structured material with intelligent question tackling and problem solving skills.</p>
+        </div>
+        </div>
+      </div>
+      <div class="feature-card m-4 card-2">
+        <div class="d-flex justify-content-center align-items-center">
+          
+        <div class="px-4">
+          <h3 class="cl-blue">Tests On Regular Basis</h3>
+        <p>Explore the art of concept with our structured material with intelligent question tackling and problem solving skills.</p>
+        </div>
+        <img src="{% static 'images/6101668.jpg' %}" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+  </section>
+  
+  
+   
+  <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+      const courseItems = document.querySelectorAll(".course-item");
+      const viewMoreBtn = document.querySelector(".view-more");
+      const viewLessBtn = document.querySelector(".view-less");
+      
+      let numDisplayed = 8; // Variable to track the number of images displayed
+  
+      // Initially, show the first four course items and hide the rest
+      for (let i = 8; i < courseItems.length; i++) {
+        courseItems[i].style.display = "none";
+      }
+  
+      // Function to display the next four course items
+      function showNextFourItems() {
+        for (let i = numDisplayed; i < numDisplayed + 4; i++) {
+          if (courseItems[i]) {
+            courseItems[i].style.display = "block";
+          }
+        }
+        numDisplayed += 4;
+  
+        // Check if all items are displayed, then show/hide buttons accordingly
+        if (numDisplayed >= courseItems.length) {
+          viewMoreBtn.style.display = "none";
+          viewLessBtn.style.display = "inline-block";
+        }
+      }
+  
+      // Function to handle the "View More" button click
+      function handleViewMore() {
+        showNextFourItems();
+      }
+  
+      // Function to handle the "View Less" button click
+      function handleViewLess() {
+        for (let i = numDisplayed - 1; i >= numDisplayed - 4; i--) {
+          if (courseItems[i]) {
+            courseItems[i].style.display = "none";
+          }
+        }
+        numDisplayed -= 4;
+        viewMoreBtn.style.display = "inline-block";
+        viewLessBtn.style.display = "none";
+      }
+      
+      // Attach click event listeners to the buttons
+      viewMoreBtn.addEventListener("click", handleViewMore);
+      viewLessBtn.addEventListener("click", handleViewLess);
+  
+      
+    });
+  </script> 
+
+  {% endblock %}
+

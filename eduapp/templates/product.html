@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css"  href="{% static 'css/style.css' %}"/>
+<div class="container-fluid bg-b-dark p-4 text-start text-white">
+    <h1 class="m-4 py-2">Courses</h1>
+    <div>
+        <span>Home</span>	&#62; <span>Category</span> &#62; <span>{% for i in product %}{%if forloop.counter == 1%}{{i.category}}{%endif%}{%endfor%}</span>
+    </div>
+</div>
+<div class="container my-4 cl-blue">
+    <div class="row my-2">
+    {% for i in product %}
+    <div class="col-lg-3 col-md-4 product my-3">
+        <a class="card" href="{{i.get_absolute_url}}">
+        <img src="{{i.image.url}}" alt=""></img>
+        <div class="p-4 d-flex flex-md-row flex-lg-row flex-column justify-content-between">
+            <div class="text-capitalize cl-blue">{{i.name}}</div>
+            <div class="text-capitalize cl-blue">{{i.price}}</div>
+
+        </div>
+        
+    </a></div>
+   
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %} 

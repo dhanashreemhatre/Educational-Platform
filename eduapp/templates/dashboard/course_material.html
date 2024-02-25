@@ -1,0 +1,24 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+{% load static %}
+<div class="m-2">
+    {% if course_notes %}
+    {% for course_note in course_notes %}
+    <div class="card p-4 my-4">
+        <div class="h3 text-center">{{course_note.course}}</div>
+        <div class="my-3">
+            <a href="{{course_note.courseFile.url}}">{{course_note.courseFile}}
+            </a>
+            
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="card">
+        <p>Material will be uploaded soon</p>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

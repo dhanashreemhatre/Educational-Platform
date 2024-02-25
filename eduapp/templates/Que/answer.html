@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+   
+   p{
+   color: #1B0A31;
+   
+}
+</style>
+
+<div class="container my-4 text-start">
+   <div class="text-start">
+      <a href="{% url 'displayQuestions' %}"><i class="fa-solid fa-arrow-left fa-2xl cl-blue"></i></a>
+  </div>
+
+    <div class="cl-dark-p m-4">
+      <b><p>Question</p></b>
+      {{que.query|safe}}
+   </div>
+    <form method="post" class="m-4">
+      {% csrf_token %}
+      <p>Please submit your answer</p>
+      <div>
+         {{form.ans}}
+      </div>
+   <input type="submit" value="submit" class="btn btn-custom-dark my-2">
+    </form>
+   </div> 
+
+{% endblock %}

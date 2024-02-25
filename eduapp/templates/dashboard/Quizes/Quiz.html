@@ -1,0 +1,32 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="text-start" id="quiz-ans">
+    <div class="row">
+        <div class="col">
+            <b>{{obj.name}}</b>
+            <p>score to pass:{{obj.required_score_to_pass}}%</p> </div>
+        <div class="col text-end mx-3" id="timer-box">
+        </div>
+    </div>
+    <a href="{% url 'main-quiz-view' %}" class="btn btn-custom-dark">go back</a>
+   
+<hr>
+<form id="quiz-form" class="my-3" method="post">
+    {% csrf_token %}
+    <div id="quiz-box" class="cl-black">
+        
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<div id="score-box"></div>
+<div id="result-box"></div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/quiz.js' %}"></script>
+{% endblock scripts %}

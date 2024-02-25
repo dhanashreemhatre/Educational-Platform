@@ -1,0 +1,122 @@
+{% extends 'TrainersDashboard.html' %}
+{% block content %}
+<!-- quiz_creation.html -->
+<div>
+    <nav>
+        {% for category in categories %}
+        <ul>
+            <a href=""><li>{{ category.name }}</li></a>
+        </ul>
+        {% endfor %}
+
+    </nav>
+</div>
+<!-- <form id="quiz-creation-form" method="POST">
+    {% csrf_token %}
+    <label for="id_name">Quiz Name:</label>
+    {{ form.name }}
+
+    <label for="id_category">Category:</label>
+    <select id="id_category" name="category">
+        <option value="">Select a category</option>
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+
+    </select>
+
+    <label for="id_course">Course:</label>
+    <select id="id_course" name="course">
+        <option value="">Select a course</option>
+        {% for course in courses %}
+            <option value="{{ course.id }}">{{ course.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="id_module">Module:</label>
+    <select id="id_module" name="module">
+        <option value="">Select a module</option>
+        {% for module in modules %}
+            <option value="{{ module.id }}">{{ module.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="id_submodule">Submodule:</label>
+    <select id="id_submodule" name="submodule">
+        <option value="">Select a submodule</option>
+        {% for submodule in submodules %}
+            <option value="{{ submodule.id }}">{{ submodule.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Create Quiz</button>
+</form> -->
+
+
+{% endblock %}
+{% block scripts %}
+    
+
+
+<script>
+    $(document).ready(function () {
+        $('#id_category').change(function () {
+            var categoryId = $(this).val();
+            $.ajax({
+                url: '{% url "trainer-create-quiz" %}',
+                data: { category: categoryId },
+                success: function (data) {
+                    $('#id_course').html(data.courses);
+                    $('#id_module').html('');
+                    $('#id_submodule').html('');
+                }
+            });
+        });
+
+        $('#id_course').change(function () {
+            var courseId = $(this).val();
+            $.ajax({
+                url: '{% url "trainer-create-quiz" %}',
+                data: { course: courseId },
+                success: function (data) {
+                    $('#id_module').html(data.modules);
+                    $('#id_submodule').html('');
+                }
+            });
+        });
+
+        $('#id_module').change(function () {
+            var moduleId = $(this).val();
+            $.ajax({
+                url: '{% url "trainer-create-quiz" %}',
+                data: { module: moduleId },
+                success: function (data) {
+                    $('#id_submodule').html(data.submodules);
+                }
+            });
+        });
+
+        $('#quiz-creation-form').submit(function (e) {
+            e.preventDefault();
+            var form = $(this);
+            $.ajax({
+                type: 'POST',
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function (data) {
+                    if (data.message) {
+                        alert(data.message);
+                    }
+                    if (data.error) {
+                        alert(data.error);
+                    }
+                },
+                error: function () {
+                    alert('An error occurred while creating the quiz.');
+                }
+            });
+        });
+    });
+    
+</script>
+{% endblock scripts %}

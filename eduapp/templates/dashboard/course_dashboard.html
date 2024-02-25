@@ -1,0 +1,30 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+{% load static %}
+<div class="m-2">
+    <div class="row">
+        {% if enrolled_courses %}
+      {% for i in enrolled_courses %}
+      <div class="col-lg-3 col-md-4 product">
+          <a class="card" href="{% url 'course_material' i.course.id %}">
+          <img src="{{i.course.image.url}}" alt=""></img>
+          <div class="p-4 d-flex flex-md-row flex-lg-row flex-column justify-content-between">
+              <div class="text-capitalize cl-blue">{{i.course.name}}</div>
+              <div class="text-capitalize cl-blue">{{i.course.price}}</div>
+  
+          </div>
+          
+      </a></div>
+     
+      {% endfor %}
+      {% else %}
+
+      <div class="card">
+        <div>You haven't enrolled for any course now </div>
+      </div>
+      {% endif %}
+  </div>
+  </div>
+
+
+{% endblock %}

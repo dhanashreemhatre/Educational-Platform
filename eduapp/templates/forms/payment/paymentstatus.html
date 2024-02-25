@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container my-4">
+
+    <div class="col my-4 alert alert-success" role="alert">
+
+        <h2 >Congratulations! You're Enrolled!</h2>
+        <h3>Order Confirmation #:  {{response.ORDERID}}</h3>
+        {% if response.RESPCODE == '01' %}
+        ORDER SUCCESS
+        {% else %}
+        ORDER FAILURE
+        {% endif%}
+
+    </div>
+    <div class="cl-blue">
+    <p>Transaction ID: {{response.TXNID}}</p>
+    <p>Transaction Amount:{{response.TXNAMOUNT}}</p> 
+     <p>Transaction Status:{{response.STATUS}}</p>
+    </div>
+    <div>
+        <a href="{% url 'dashboard' %}">Visit DashBoard</a>
+    </div>
+</div>
+{% endblock %}

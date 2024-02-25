@@ -1,0 +1,49 @@
+{% extends 'TrainersDashboard.html' %}
+
+{% block content %}
+{% load static %}
+{% if msg %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{msg}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="courses" class="form-label">Course</label>
+    <select class="form-select" aria-label="Default select example" name="courses">
+        {% for course in courses %}
+        <option value="{{course}}"> {{course}}</option>
+        {% endfor %}
+      </select>
+      <div class="input-group my-3">
+        <label class="input-group-text" for="document">Material</label>
+        <input type="file" class="form-control" id="document" name="document">
+      </div>
+      <input type="submit" value="Add" class="btn btn-primary">
+
+
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Course</th>
+      <th scope="col">file</th>
+    </tr>
+  </thead>
+  <tbody>
+      {%for courseMaterial in courseMaterials %}
+    <tr>
+      <th scope="row">{{courseMaterial.id}}</th>
+      <td>{{courseMaterial.course}}</td>
+      <td><a href="{{courseMaterial.courseFile.url}}">{{courseMaterial.courseFile}}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

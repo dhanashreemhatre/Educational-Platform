@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{%block content %}
+{% load static %}
+
+<section id="enrollform">
+
+
+    <div class="login-card  text-start ">
+     
+
+        <div class="row">
+            <div class=" p-5 col-lg-6 bg-b-dark d-flex flex-column justify-content-center align-items-center">
+                <div class="text-center">
+                    <h1 class="text-white">Welcome to our website</h1>
+                    <p class="text-white">Unlock a world of possibilities – log in and explore your journey!</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="p-5 col-lg-6 d-flex flex-column justify-content-center">
+                <div class="text-center">
+                    <h2 class="cl-blue">Login here</h2>
+                </div>
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+            
+                    {% endfor %}
+                    {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <label for="username" class="form-label">Name</label>
+                        <input type="text" name="username" class="form-control mb-2" required>
+                    </div>
+                    <div>
+                        <label for="pass" class="form-label">Password</label>
+                        <input type="password" name="pass" class="form-control mb-2" required>
+                    </div>
+                    <div class="mt-2">
+                        <input type="submit" value="Sign in" class="btn-custom-dark btn mt-4 w-100">
+                    </div>
+                    <div class="mt-2">
+                        {% load socialaccount %}
+                        <a class="btn-custom-dark btn mt-4 w-100" href="">Sign in with Google</a>
+                    </div>
+
+
+                </form>
+                <p class="m-2"><span class="pt-2">New User? </span><a href="{% url 'register' %}"><span>Sign
+                            up</span></a></p>
+                 <a href="{% url 'password_reset' %}" class="">Forgotten Your Password?</a>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

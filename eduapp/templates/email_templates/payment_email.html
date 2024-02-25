@@ -1,0 +1,11 @@
+<p>Dear {{enrollment.user_profile.user}},</p>
+
+<p> We are delighted to inform you that your payment for course enrollment has been successfully processed. Congratulations on taking this important step towards your educational journey with [Name of Educational Institution]!</p>
+    
+  <p>Here are the details of your enrollment:</p>  
+    
+  <p>Course: {{enrollment.course}}</p>  
+    <p>Enrollment Date: {{enrollment.enrollment_date}}</p>
+    <p>Payment Amount: {{response_dict.TXNAMOUNT}}</p>
+   <p>Payment Transaction ID: {{response_dict.TXNID}}</p> 
+   <p>Status:{{response_dict.STATUS}}</p>

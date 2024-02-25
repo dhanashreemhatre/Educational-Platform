@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+:root{
+    --light-blue:#edf5e1;
+    --light-blue-dark:#5A4BDA;
+    --light-purple:#f7f1ff;
+    --dark-purple:#1B0A31;
+    --success:#198754;
+    --pink-color:#eb427e;
+    --color-white: #ffffff;
+--color-light: #f1f5f8;
+--color-black: #252a32;
+--color-blue: #148cb8;
+--color-red: #d32f2f;
+
+--box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+	0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.cl-success{
+    color: var(--success);
+}
+.cl-dark-p{
+    color: var(--dark-purple) !important;
+}
+
+.bg-light-p{
+    background: var(--light-purple);
+}
+.bg-b-dark{
+    background: var(--light-blue-dark);
+}
+.date{
+    font-size: 14px;
+}
+body{
+    font-family: 'Verdana', sans-serif;
+    text-align: center;
+}
+h1,h2,h3{
+    font-family:"Poppins";
+}
+p{
+    color: #a0a0a0;
+}
+.mt-20{
+    margin-top: 4%;
+}
+.m-20{
+    margin: 0 4%;
+    padding: 4%;
+    
+}
+/* Home or base page styles included here */
+
+
+/* navigation colors and design code */
+nav a{
+    color: var(--light-blue-dark) !important;
+}
+nav{
+    padding:50px 100px;
+}
+.nav-logo img{
+    height: 50px;
+}
+.nav-dropdown{
+    border: 1px solid gray !important;
+}
+#search input{
+    background-color:none;
+    border: 1px solid var(--light-blue-dark);
+}
+#search-button{
+    background-color:none;
+    border: 1px solid var(--light-blue-dark);
+}
+#search-button i{
+    color: var(--light-blue-dark);
+    
+}
+.row{
+    border: none;
+}
+.bg-dark-blue{
+    background: var(--light-blue-dark);
+}
+
+.logo-font{
+    font-family: 'Fasthand', cursive;
+    font-size: 3rem;
+}
+
+.card{
+    text-decoration: none;
+    color: black;
+    padding: 0;
+    margin: 0;
+    
+}
+.product img{
+
+    border-radius: 8px;
+    height: 200px !important;
+
+}
+.product>.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.category>.card{
+    border-radius: 8px;
+
+    background-color: white;
+    margin: 4px;
+}
+.category>.card:hover{
+    transform: scale(1.03);
+    position: relative;
+    top: -15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.category div {
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.category img{ 
+    height: 150px;
+    border-radius: 8px;
+}
+
+.carousel-item{
+    height: 500px;
+}
+
+
+/* product scrollbar */
+
+
+
+/* product scrollbar end */
+
+/* container classes Home Page */
+
+.get-started{
+    background: rgb(2,0,36);
+    background: var(--light-blue-dark);
+    color: white;
+    padding: 4%;
+}
+.get-started h1{
+    font-size: 3.5rem;
+}
+.get-started button{
+    color: white;
+    background: none;
+    border: 1px solid white;
+    padding: 8px 36px;
+    border-radius: 16px;
+    margin: 2rem;
+}
+.get-started button:hover{
+    background: white;
+    color:  rgba(9,9,121,1);
+}
+
+/* contact us */
+#contact-us{
+    text-align: left;
+}
+#contact-us h2{
+    text-align: center;
+    margin:20px;
+}
+
+
+.right{
+    text-align: right;
+}
+.left{
+    text-align: left;
+}
+.btn-custom{
+    border: 1px solid var(--light-blue-dark) !important;
+    color: white  !important;
+    background: var(--light-blue-dark);
+}
+
+.btn-custom:hover{
+    
+}
+.btn-custom-dark{
+    border: 1px solid var(--light-blue-dark) !important;
+    color: white  !important;
+    background: var(--light-blue-dark);
+}
+.btn-custom-dark:hover{
+    background: none;
+    color: var(--light-blue-dark)  !important;
+}
+
+.features h1{
+    font-size: 4.5rem;
+    font-weight: bold;
+    background: -webkit-linear-gradient(90deg,  rgba(235,66,126,1) 1%,rgba(90,75,218,1) 85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.features{
+    background: #fcfcfc;
+}
+.features img{
+    height: 200px;
+
+}
+.feature-card{
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.card-1{
+    border-radius: 25px 25px 0px 0px;
+}
+.card-2{
+    border-radius: 0px 0px 25px 25px;
+}
+footer h5{
+    color: var(--pink-color);
+}
+.btn-pink{
+    border: 1px solid var(--pink-color) !important;
+    color: white  !important;
+    background: var(--pink-color);
+
+}
+
+/* product_details */
+.userlogo{
+   height: 45px;
+   width: 45px;
+   border-radius: 50%; 
+   float: left;
+   margin-right: 8px;
+}
+.userlogo+p{
+    align-self: center;
+    
+}
+.userlogo>a{
+    text-decoration: none;
+}
+
+.product_details_head{
+    background-color: rgb(231, 219, 253);
+    text-align: start;
+    color: var(--light-blue-dark);
+}
+.enrolled{
+    margin-right: 8px;
+    padding: 8px;
+}
+
+.cl-blue{
+    color: var(--light-blue-dark);
+}
+.feature{
+    text-transform: capitalize;
+}
+.feature span{
+    color: #515151;
+    
+}
+/* categories section present in home.html */
+#categories{
+    background: #fcfcfc;
+    padding: 4% 0;
+}
+
+
+/* Enrollment form  and login forms css which i actually use for the contact page too*/
+
+label{
+    color: var(--light-blue-dark);
+}
+
+.login-card{
+    width: 60%;
+    position: relative;
+    left: 15%;
+    margin-top: 4%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+}
+.login-card h2{
+    color: var(--light-blue-dark);
+}
+
+.login-card input::placeholder{
+    color: #515151;
+}
+input[type="date"]{
+    color: #515151;
+}
+
+#enrollform{
+    margin: 4%;
+
+}
+#topics{
+    text-align: start;
+}
+#topics p{
+ color: rgb(118, 118, 118);
+}
+#overview{
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: #a0a0a0;
+}
+#overview .head{
+    font-size: 18px;
+    color: #515151;
+
+}
+#detail-right{
+    text-align: left;
+    flex: 0 0 calc(33.333% - 1rem); /* Adjust the width as needed */
+    position: sticky;
+    top: 0; /* Adjust this value as needed */
+    align-self: flex-start;
+
+}
+#detail-right>.card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.row.g-5.m-3 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#overview {
+    flex: 0 0 calc(66.666% - 1rem); /* Adjust the width as needed */
+    padding: 1rem;
+}
+
+
+
+
+#payment p{
+    color: #515151;
+    text-align: start;
+}
+
+#contact{
+    align-items: center;
+    justify-content: center;
+    margin: 5%;
+}
+#contact .input-box{
+    background-color: var(--light-purple);
+    margin: 0.5rem;
+    border-radius: 1.5rem;
+}
+#contact input{
+    border: none;
+    padding: 1rem 1.5rem;
+    width: 85%;
+    background: transparent;
+}
+#contact input:focus::placeholder {
+    color: transparent;
+  }
+  #contact button{
+    margin: 0.5rem;
+    border-radius: 1.5rem;
+    padding: 0.8rem 1rem;
+    width: 100%;
+  }
+#contact img:hover{
+    transform: scale(1.2);
+    transform: rotate(12deg);
+}
+.form-select{
+    background-color: var(--light-purple);
+    padding: 10px;
+    border-radius: 15px;
+}
+
+
+/* gallery which is present in users profile */
+/* profile page */
+.profileImg{
+    height: 300px;
+    width: 300px;
+}
+/* questionpage */
+.que-search{
+    justify-content: center;
+}
+.que-search input{
+    width: 50%;
+    border: none;
+   padding: 20px;
+   background-color: var(--light-purple);
+   border-radius: 30px;
+
+}
+.que-search button{
+    border: none;
+    background-color: none;
+    background-color: var(--light-purple);
+    border-radius: 30px;
+    
+}
+.show-Que{
+    padding: 5%;
+}
+.btn-round{
+    padding: 8px 16px;
+    color: var(--light-blue-dark);
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+}
+
+
+
+
+  @media (max-width: 450px) {
+    nav{
+    padding:25px 4px;
+}
+    .login-card{
+        width: 90%;
+        margin: 2%;
+    }
+    .carousel-item{
+        height: 300px;
+    }
+    .get-started {
+        padding-top: 2rem;
+    }
+    .get-started h1{
+        font-size: 2.5rem;
+    }
+    .features h1{
+        font-size: 2rem;
+    }
+    
+    .features img{
+        height: 200px;
+    
+        
+    }
+    .feature-card{
+        padding: 8px;
+    }
+    .feature-card>.d-flex{
+        display: block !important;
+    }
+    .que-search input{
+        width: 80%;
+        border: none;
+       padding: 10px;
+       background-color: var(--light-purple);
+       border-radius: 20px;
+    
+    }
+    .que-search button{
+        border: none;
+        background-color: var(--light-purple);
+        border-radius: 20px;
+        
+    }
+    .btn-round{
+        padding: 4px 8px;
+        color: var(--light-blue-dark);
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+    }
+    .login-card{
+        width: 96%;
+        margin: 2%;
+        position: relative;
+        left: 0%;
+        margin-top: 4%;
+    
+    }
+      
+  }
+  
+  @media (max-width: 300px) {
+    nav{
+    padding:25px 2px;
+}
+.nav-logo img{
+    height: 40px;
+}
+    .btn.filter {
+      padding-left: 1.1rem;
+      padding-right: 1.1rem;
+    }
+    .carousel-item{
+        height: 200px;
+    }
+    .login-card{
+        width: 95%;
+        margin: 2%;
+        position: relative;
+        left: 0%;
+        margin-top: 4%;
+    }
+    
+  }

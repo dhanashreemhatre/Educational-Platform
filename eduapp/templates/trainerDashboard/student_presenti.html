@@ -1,0 +1,30 @@
+{% extends 'TrainersDashboard.html' %}
+
+{% block content %}
+{% load static %}
+<div class="clearfix"></div>
+	<br/>
+    <table class="table">
+       
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Course_Enrolled</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for enrolled_student in enrolled_students %}
+          <tr>
+            <th scope="row">{{enrolled_student.id}}</th>
+            <td>{{enrolled_student.user.first_name}}</td>
+            <td> {{enrolled_student.user.last_name}}</td>
+            <td> {{enrolled_student.course.name}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+       
+      </table>
+
+{% endblock %}

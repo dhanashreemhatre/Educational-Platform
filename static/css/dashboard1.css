@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+:root{
+    --light-blue:#edf5e1;
+    --purple:#5A4BDA;
+    --light-purple:#f7f1ff;
+    --dark-purple:#1B0A31;
+    --success:#198754;
+    --pink-color:#eb427e;
+}
+.sidenav{
+    height: 100%;
+    width: 300px;
+    background-color: var(--purple);
+    float: left;
+}

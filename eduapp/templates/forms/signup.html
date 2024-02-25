@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{%block content %}
+{% load static %}
+
+<section id="enrollform">
+    
+    <div class="login-card m-20 text-start">
+        <div class="text-center"><h2 class="cl-blue mb-5">Create New Account</h2></div>
+        {% if error_message %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ error_message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="uname" class="form-label">{{form.first_name.label}}</label>
+                    {{form.first_name}}
+                </div>
+                <div class="col-lg-6">
+                    <label for="email" class="form-label">{{form.last_name.label}}</label>
+                    {{form.last_name}}
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-lg-6">
+                    <label for="uname" class="form-label">{{form.username.label}}</label>
+                    {{form.username}}
+                </div>
+                <div class="col-lg-6">
+                    <label for="email" class="form-label">{{form.email.label}}</label>
+                    {{form.email}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="pass" class="form-label mt-2">{{form.password.label}}</label>
+                    {{form.password}}
+                </div>
+                <div class="col-lg-6">
+                    <label for="pass2" class="form-label mt-2">Confirm Passowrd</label>
+                    {{form.password_repeat}}
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="Sign Up" class="btn-custom-dark btn mt-4 w-100">
+            </div>
+           
+
+        </form>
+        <p><span class="pt-2">Already have an Account? </span><a href="{% url 'login' %}"><span>Sign in</span></a></p>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load custom_filters %}
+
+<style>
+    p {
+        color: #1B0A31;
+
+    }
+</style>
+
+<div class="container-fluid" id="display-Que">
+
+    <div class="bg-b-dark show-Que">
+        <div class="text-start">
+            <a href="{% url 'home' %}"><i class="fa-solid fa-arrow-left fa-2xl text-white"></i></a>
+        </div>
+        <h1 class="text-white">Get Your Doubts Cleared.</h1>
+        <form method="get" action="{% url 'questionSearchResults'%}">
+            {% csrf_token %}
+            <div class="que-search input-group">
+                <input type="text" name="que" id="que" placeholder="what questions do you have?" class="btn">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass px-3"></i></button>
+            </div>
+        </form>
+        <div class="text-end">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'question' %}"><button class="btn-round my-2">Ask Questions</button></a>
+            {% else %}
+            <a href="{% url 'login' %}?next={% url 'question' %}"><button class="btn-round my-2">Ask Questions</button></a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+
+{% if questions_with_answer_counts %}
+<div class="container my-4">
+    <div class="row g-2">
+        {% for question in questions_with_answer_counts %}
+        <div class="text-start col-lg-4 col-md-6">
+            <div class="card bg-white p-2">
+                <span class="text-capitalize">{{question.student}}</span>
+
+                <div class="cl-dark-p">
+                    <b>{{ question.query|first_line_safe }}</b>
+                </div>
+                <div>
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'answer' question.id %}" class="cl-dark-p">reply</a>
+                    {% else %}
+                    <a href="{% url 'login' %}?next={% url 'answer' question.id %}" class="cl-dark-p">reply</a>
+                    {% endif %}
+                    
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'displayAnswer' question.id  %}" class="mx-4 cl-dark-p">Answered by {{question.num_answers }}</a>
+                    {% else %}
+                    <a href="{% url 'login' %}?next={% url 'displayAnswer' question.id  %}" class="mx-4 cl-dark-p">Answered by {{question.num_answers }}</a>
+                    {% endif %}
+                </div>
+                <span class="me-auto date">{{question.created_date}}</span>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% else %}
+
+<div class="container my-4">
+    <div class="bg-light-p p-2">
+             <p>No questions found. Be the first to add a question!</p>
+            
+            
+    </div>
+    <img src="https://media.giphy.com/media/Ie4CIIvQS0bk3zwZlM/giphy.gif" alt="">
+</div>
+
+{% endif %}
+
+{% endblock %}

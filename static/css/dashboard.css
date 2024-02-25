@@ -1,0 +1,162 @@
+:root{
+  --light-blue:#edf5e1;
+  --light-blue-dark:#5A4BDA;
+  --light-purple:#f7f1ff;
+  --dark-purple:#1B0A31;
+  --success:#198754;
+  --pink-color:#eb427e;
+  --light-green:#68fc8d;
+  --light-red:#fc6868;
+}
+*{
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+
+}
+.cl-success{
+  background-color: var(--light-green);
+}
+.cl-danger{
+  background-color: var(--light-red);
+}
+#quiz-box p{
+ color: #222 !important;
+}
+.cl-black{
+  color: var(--color-black);
+}
+body{display: flex;}
+.sidebar{
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 110px;
+  height: 100vh;
+  padding: 0 1.7rem;
+  color: #fff;
+  overflow: hidden;
+  transition: all 0.5s linear;
+  background-color: var(--light-blue-dark);
+}
+.not-visible {
+  display: none;
+}
+.sidebar:hover{
+  width: 240px;
+  transition: 0.5s;
+}
+.logo{
+  height: 80px;
+  padding: 16px;
+
+}
+.menu{
+  height: 88%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+.menu li{
+  padding: 1rem;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.5s ease-in-out;
+}
+.menu li:hover,
+.active{
+  background-color: #7a70d2;
+}
+.menu a{
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+}
+.menu a i{
+  font-size: 1.5rem;
+}
+.menu a span{
+  overflow: hidden;
+}
+/* 
+main contant start here */
+.main--content{
+  position: relative;
+  background-color: #ebe9e9;
+  width: 100%;
+  padding: 1rem;
+}
+
+.header--wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding: 10px 2rem;
+  margin-bottom: 1rem;
+}
+.header--title{
+  color: var(--light-blue-dark);
+
+}
+.user--info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-box{
+  background-color: rgb(237, 237, 237);
+  border-radius: 15px;
+  color: rgba(113, 99, 186, 255);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+}
+.search-box input{
+  background:transparent;
+  padding: 10px;
+}
+.search-box i{
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+
+}
+.search-box i:hover{
+  transform: scale(1.2);
+
+}
+.main--container{
+  background-color: white;
+}
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown button{
+  background-color: #5A4BDA !important;
+  color: white;
+}
+.user{
+  color: white;
+}
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+.dropdown-menu{
+  right: 0;
+}
+
+#result-box p{
+ color: #222;
+ display: inline;
+}

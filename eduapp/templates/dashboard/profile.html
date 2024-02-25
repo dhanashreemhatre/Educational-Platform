@@ -1,0 +1,108 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+{% load static %}
+<div class="m-2 text-start">
+    <div class="card p-3">
+        <p class="text-sm">
+          Hi, {{request.user}}.
+        </p>
+        <hr class="horizontal gray-light my-4">
+
+        <ul class="list-group">
+          <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; {{profile.user.first_name}} {{profile.user.last_name}}</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{profile.phone_number}}</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{profile.user.email}}</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Date of Birth:</strong> &nbsp; {{profile.date_of_birth}}</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; {{profile.address}}</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Qualification:</strong> &nbsp; {{profile.educational_qualification}}</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Experience:</strong> &nbsp; {{profile.experience}}</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Documents:</strong> &nbsp;{%if profile.documents %} <a href="{{profile.documents.url}}">{{profile.documents}}</a> {% endif %} </li>
+        </ul>
+
+<h1 class="cl-blue my-4">Update your profile</h1>
+         <!-- Account details card-->
+         <div class="card mb-4">
+          <div class="card-header">Account Details</div>
+          <div class="card-body">
+              <form method="post"  enctype="multipart/form-data">
+                {% csrf_token %}
+                  <!-- Form Group (username)-->
+                  <div class="mb-3">
+                      <label class="small mb-1" for="inputUsername">Username</label>
+                      <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="{{profile.user}}" readonly>
+                  </div>
+                  <!-- Form Row-->
+                  <div class="row gx-3 mb-3">
+                      <!-- Form Group (first name)-->
+                      <div class="col-md-6">
+                          <label class="small mb-1" for="inputFirstName">First name</label>
+                          <input class="form-control" id="inputFirstName" name="inputFirstName" type="text" placeholder="Enter your first name" value="{{profile.user.first_name}}">
+                      </div>
+                      <!-- Form Group (last name)-->
+                      <div class="col-md-6">
+                          <label class="small mb-1" for="inputLastName">Last name</label>
+                          <input class="form-control" id="inputLastName" name="inputLastName" type="text" placeholder="Enter your last name" value="{{profile.user.last_name}}">
+                      </div>
+                  </div>
+                  <!-- Form Row        -->
+                  <div class="row gx-3 mb-3">
+                      <!-- Form Group (organization name)-->
+                      <div class="col-md-6">
+                          <label class="small mb-1" for="inputexp">Experience</label>
+                          <input class="form-control" id="inputexp" name="inputexp" type="text" placeholder="Enter your organization name" value="{{profile.experience}}">
+                      </div>
+                      <!-- Form Group (location)-->
+                      <div class="col-md-6">
+                          <label class="small mb-1" for="inputLocation">Address</label>
+                          <input class="form-control" id="inputLocation" name="inputLocation" type="text" placeholder="Enter your location" value="{{profile.address}}">
+                      </div>
+                  </div>
+                  <!-- Form Group (email address)-->
+                  <div class="mb-3">
+                      <label class="small mb-1" for="email">Email address</label>
+                      <input class="form-control" id="email" name="email" type="email" placeholder="Enter your email address" value="{{profile.user.email}}">
+                  </div>
+                  <!-- Form Row-->
+                  <div class="row gx-3 mb-3">
+                      <!-- Form Group (phone number)-->
+                      <div class="col-md-6">
+                        <label class="small mb-1" for="inputBirthday">Birthday</label>
+                        <p>{{profile.date_of_birth}}</p>
+                        <input class="form-control" id="inputBirthday" type="date" name="inputBirthday" placeholder="Enter your birthday" value="">
+                        
+                    </div>
+                      
+                      <!-- Form Group (birthday)-->
+                      <div class="col-md-6">
+                        <label class="small mb-1" for="qauli">Educational Qualification</label>
+                        <p>{{profile.educational_qualification}}</p>
+                        <select name="qauli" id="qauli" class="form-select form-select-sm">
+                            {% for q in quali %}
+                            <option value="{{q}}" class="dropdown-item">{{q}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                     
+                  </div>
+                  <div class="row gx-3 mb-3">
+                    <!-- Form Group (phone number)-->
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputPhone">Phone number</label>
+                        <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name="inputPhone">
+                    </div>
+                    <!-- Form Group (birthday)-->
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="documents">Upload Documents</label>
+                        <input class="form-control" type="file" id="documents" name="documents">
+                    </div>
+                </div>
+                  <!-- Save changes button-->
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+              </form>
+          </div>
+      </div>
+      </div>
+  </div>
+
+
+{% endblock %}

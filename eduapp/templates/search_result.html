@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{%block content %}
+{% load static %}
+<div class="container-fluid bg-b-dark p-4 text-start text-white">
+    <h1 class="m-4 py-2">Courses</h1>
+    <div>
+        <span>Home</span>	&#62; <span>Category</span> &#62; <span>{% for i in object_list %}{%if forloop.counter == 1%}{{i.category}}{%endif%}{%endfor%}</span>
+    </div>
+</div>
+
+<div class="container my-4 cl-blue">
+
+    <div class="row my-2">
+        {% for courses in object_list %}
+    <div class="col-lg-3 col-md-4 products">
+        <a class="card" href="{{courses.get_absolute_url}}">
+        <img src="{{courses.image.url}}" alt=""></img>
+        <div class="text-start p-4">
+            <div class="text-capitalize cl-blue">{{ courses.name }}</div>
+        </div>
+        
+    </a></div>
+   
+    {% endfor %}
+</div>
+
+
+</div>
+ 
+ {%endblock%}
+      
+
+

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load custom_filters %}
+<style>
+   
+    p{
+    color: #1B0A31;
+    
+}
+</style>
+
+<div class="container my-4 text-center" id="display-Que">
+    <div class="text-start">
+        <a href="{% url 'displayQuestions' %}"><i class="fa-solid fa-arrow-left fa-2xl cl-blue"></i></a>
+    </div>
+    <h3 class="cl-blue">Answers</h3>
+    
+    {% if answers %}
+    {% for answer in answers %}
+
+    <div class="card row text-start bg-light-p p-2">
+        {% if forloop.counter == 1 %}
+        <div>Question.{{ answer.question.query|safe}}</div>
+        <div class="p-2">Answers:</div>
+        {% endif %}
+            
+            <div class="">
+                <span class="text-capitalize"><b>{{answer.student}}</b></span> 
+            </div>
+            <div class="">
+                <div class="cl-dark-p">
+                    {{answer.ans|safe}}
+                </div>
+                <div>
+                    <a href="" class="cl-dark-p">Comment</a>                 
+                    <span class="me-auto">{{answer.created_date}}</span>
+                </div>
+                <div class="mt-1">
+                  
+                    <p><i class="fa-thumbs-up fa-lg {% if answer.user_has_upvoted %}fa-solid {%else%}fa-regular {% endif %}" id="upvote-icon-{{ answer.id }}"></i> <span id="Upvote-count-{{ answer.id }}">{{ answer.num_upvote|default:"0" }}</span></p>
+                </div>
+            </div>
+            
+            <hr> 
+        </div>
+        
+
+    {% endfor %}
+    {% else %}
+    <div class="mt-4 p-2 text-center bg-light-p">
+        <div class="cl-dark-p">
+            <span>Be first to answer</span>
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+
+
+    
+  
+
+{% endblock %}

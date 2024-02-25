@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%block content %}
+{% load static %}
+
+<div class="container my-4">
+  <div class="card p-4">
+    <div class="cl-dark-p">
+      <h3>Hello {{name}}</h3>
+       You have successfully registered for {{course}} our team will contact you soon.
+      <i class="fa-sharp fa-solid fa-circle-check fa-bounce fa-2xl cl-success"></i>
+    </div>
+    </div>
+    <div>
+        Download link:<li class=" list-unstyled"><a href="{{pdf.pdf.url}}">{{pdf.name}}</a></li>
+    </div>
+</div>
+{% endblock %} 

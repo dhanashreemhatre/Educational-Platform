@@ -1,0 +1,43 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+{% load static %}
+<div class="m-2">
+  <div class="row m-2">
+    <div class="col-lg-6">
+      <div class="card p-2 h-100">
+        <h3>Your highest Score in Test</h3>
+        <h2>{{max_score}}</h2>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card p-2 h-100">
+        <h3>New Test Arrived</h3>
+        <p>Python And django(25-4-2023)</p>
+      </div>
+    </div>
+  </div>
+  <section class="m-2">
+    <h2>--Your Tests--</h2>
+    <div class="row m-2">
+      <div class="col-lg-4 col-md-6">
+        {% for topic in Topics %}
+        <div class="card p-2 h-100">
+          <a href="{% url 'quiz-list-module-title' module_title_id=topic.id %}" class="nav-link cl-blue text-capitalize">
+            <h5 class="bg-light p-2">{{topic.module.course.name}}</h5>
+            <h6>{{topic.module.module}}</h6>
+            <caption>{{topic.title}}</caption>
+          </a>
+        </div>
+        {%endfor%}
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- <div class="card p-2">
+    Tests will be uploaded soon.
+  </div> -->
+</div>
+
+
+{% endblock %}

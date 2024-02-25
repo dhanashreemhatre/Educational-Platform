@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="row" id="contact">
+  <div class="col-lg-6">
+    <img class="img-fluid" src="https://images.unsplash.com/photo-1520923642038-b4259acecbd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2019&q=80" alt="">
+  </div>
+  
+  <div class="col-lg-6">
+    <h2 class="cl-blue mb-3 text-start">Get in touch</h2>
+    <form method="post" name="form1">
+      {% csrf_token %}
+      <div class="row g-2">
+        <div class="">
+         <div class="input-box">
+          <label for="name"><i class="fa-solid fa-user"></i></label>
+          <input type="text" placeholder="name" name="name" required>
+         </div>
+          <div class="input-box">
+            <label for="email"><i class="fa-solid fa-envelope "></i></label>
+          <input type="email" placeholder="email" name="email" required>
+          </div >
+          <div class="input-box">
+            <label for="phone"><i class="fa-solid fa-phone"></i></label>
+          <input type="tel" placeholder="phone"  name="phone" pattern="[0-9]{4}[0-9]{6}">
+          </div>
+          <div class="input-box">
+            <label for="msg"><i class="fa-solid fa-message"></i></label>
+          <input type="text" placeholder="Message" name="msg">
+          </div>
+        </div>
+        <div class="">
+          <div class="text-start">
+            <label for="name">which course you have interest in?</label>
+            <select name="course" id="course" class="form-select form-select-sm">
+              {% for c in products %}
+              <option value="{{c.name}}" class="dropdown-item">{{c.name}}</option>
+              {% endfor %}
+            </select>
+            
+          </div>
+          <div class="">
+            <button type="submit" class=" btn-custom">Contact</button>
+          </div>
+        </div>
+      </div>
+  </div>
+  </form>
+
+
+</div>
+
+<script>
+  function phonenumber(inputtxt)
+{
+  var phoneno = /^\d{10}$/;
+  if((inputtxt.value.match(phoneno)))
+        {return true;}
+        
+      else
+        {
+        alert("Enter Phonenumber");
+        return false;
+        }
+}
+
+</script>
+
+{% endblock %}

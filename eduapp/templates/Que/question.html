@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="container my-4">
+    <div class="text-start">
+        <a href="{% url 'displayQuestions' %}"><i class="fa-solid fa-arrow-left fa-2xl cl-blue"></i></a>
+    </div>
+   
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <h3 class="cl-blue">Ask Questions </h3>
+            
+            <p>Questions will be answered by students or our team.</p>
+        </div>
+       <div>
+        {{form.query}}
+       </div>
+       <input type="submit" value="Submit" class="btn btn-custom-dark">
+    </form>
+
+</div>
+
+
+
+
+{% endblock %}

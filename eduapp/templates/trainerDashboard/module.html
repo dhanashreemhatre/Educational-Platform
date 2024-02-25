@@ -1,0 +1,21 @@
+{% extends 'TrainersDashboard.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="col-div-8 " >
+        <div class="box-8" style="background-color: rgb(255, 255, 255); padding-bottom: 5%;">
+            <div class="container" style="padding-left: 5%;">
+            <h2>Module title</h2>
+            <!-- for loop  -->
+            <h2>Module: {{ module.module }}</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                <label style="font-size: 18px;" for="title">Write a Title: </label><br>
+                <textarea style="padding: 2%; font-size: 16px;" name="title"  cols="100" rows="10"></textarea><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,161 @@
+:root{
+  --light-blue:#edf5e1;
+  --light-blue-dark: #812cf1;
+  --light-purple:#f7f1ff;
+  --dark-purple:#1B0A31;
+}
+
+html, body, main {
+  width: 100%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+#carousel {
+  position: relative;
+  height: 400px;
+  top: 50%;
+  transform: translateY(-40%);
+  overflow: hidden;
+}
+#carousel div {
+  position: absolute;
+  transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+  opacity: 1;
+}
+#carousel div img {
+  width: 400px;
+  transition: width 1s;
+}
+.hideLeft {
+  left: 0%;
+  opacity: 0;
+  transform: translateY(50%) translateX(-50%);
+}
+.hideLeft img {
+  width: 200px;
+}
+.hideRight {
+  left: 100%;
+  opacity: 0;
+  transform: translateY(50%) translateX(-50%);
+}
+.hideRight img {
+  width: 200px;
+}
+.prev {
+  z-index: 5;
+  left: 30%;
+  transform: translateY(50px) translateX(-50%);
+}
+.prev img {
+  width: 300px;
+}
+.prevLeftSecond {
+  z-index: 4;
+  left: 15%;
+  transform: translateY(50%) translateX(-50%);
+  opacity: 0.7;
+}
+.prevLeftSecond img {
+  width: 200px;
+}
+.selected {
+  z-index: 10;
+  left: 50%;
+  transform: translateY(0px) translateX(-50%);
+}
+.next {
+  z-index: 5;
+  left: 70%;
+  transform: translateY(50px) translateX(-50%);
+}
+.next img {
+  width: 300px;
+}
+.nextRightSecond {
+  z-index: 4;
+  left: 85%;
+  transform: translateY(50%) translateX(-50%);
+  opacity: 0.7;
+}
+.nextRightSecond img {
+  width: 200px;
+}
+
+.buttons {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 200px;
+ 
+  
+}
+.buttons button{
+  border: none;
+  background-color: none;
+}
+
+/*# sourceMappingURL=profile.css.map */
+#info{
+  margin-top: 8%;
+  background-color: var(--light-purple);
+}
+p,ul{
+  color: var(--dark-purple);
+}
+
+@media (max-width:900px){
+  #carousel div img {
+    width: 300px;
+  }
+  .hideLeft img {
+    width: 100px;
+  }
+  .hideRight img {
+    width: 100px;
+  }
+  .prev img {
+    width: 200px;
+  }
+  .prevLeftSecond img {
+    width: 150px;
+  }
+  .next img {
+    width: 200px;
+  }
+  .nextRightSecond img {
+    width: 150px;
+  }
+}
+@media (max-width:700px){
+  #carousel {
+   
+    height: 300px;
+    /* top: 50%;
+    transform: translateY(-40%);
+    overflow: hidden; */
+  }
+  #carousel div img {
+    width: 300px;
+  }
+  .hideLeft img {
+    width: 100px;
+  }
+  .hideRight img {
+    width: 100px;
+  }
+  .prev img {
+    width: 200px;
+  }
+  .prevLeftSecond img {
+    width: 150px;
+  }
+  .next img {
+    width: 200px;
+  }
+  .nextRightSecond img {
+    width: 150px;
+  }
+}
