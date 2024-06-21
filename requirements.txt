@@ -10,7 +10,7 @@ colorama==0.4.6
 cryptography==42.0.8
 cssselect2==0.7.0
 defusedxml==0.8.0rc2
-Django==5.0.1
+Django==4.2.11
 django-allauth==0.63.3
 django-ckeditor==6.7.1
 django-cors-headers==4.3.1
