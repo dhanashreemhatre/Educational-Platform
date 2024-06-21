@@ -1,74 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<main class="py-4">
+  <h2>profiles</h2>
 
-<link rel="stylesheet" href="{% static 'css/profile.css' %}">
 
-
-        <main class="container">
-
-                <div id="carousel">
-            
-                   <div class="hideLeft">
-                    <img src="{% static 'images/profileImage5.jpeg' %}">
-                  </div>
-            
-                  <div class="prevLeftSecond">
-                    <img src="{% static 'images/profileImage17.jpeg' %}">
-                  </div>
-            
-                  <div class="prev">
-                    <img src="{% static 'images/profileImage14.jpeg' %}">
-                  </div>
-            
-                  <div class="selected">
-                    <img src="{% static 'images/profileImage18.jpeg' %}">
-                  </div>
-            
-                  <div class="next">
-                    <img src="{% static 'images/profileImage1.jpeg' %}">
-                  </div>
-            
-                  <div class="nextRightSecond">
-                    <img src="{% static 'images/profileImage10.jpeg' %}">
-                  </div>
-            
-                  <div class="hideRight">
-                    <img src="{% static 'images/profileImage11.jpeg' %}"">
-                  </div>
-            
-                </div>
-            
-                <div class="buttons">
-                  <button id="prev"><i class="fa-solid fa-lg fa-chevron-left cl-dark-p"></i></button>
-                  <button id="next"><i class="fa-solid fa-lg fa-chevron-right cl-dark-p"></i></button>
-                </div>
-            
-              </main>
-        <div class="container" id="info">
-                <div class="m-2 d-flex flex-column justify-content-center text-center align-items-center">
-                  <h2 class="mt-2">Let's revolutionize your tech journey together!</h2>
-                        <img src="{% static 'images/profileImage3.jpeg' %}" alt="" class="profileImg img-fluid mt-4">
-                        <div>
-                          
-                                <h3 class="name">M Nath Sir</h3>
-
-                                <p>Unlocking the power of technology for over two decades.</p>
-                                <span class="fw-bold">Educational Background and Experience:</span>
-                                <ul class="edu list-unstyled">
-                                        <li>Master's in Electronics </li>
-                                        <li>certified in CCNA,Linux, and Windows Server. </li>
-                                        <li>Expert in Java, Python, AI, and IoT applications.</li>
-                                        <li>Founder and CEO of SNT Supernet Technologies Pvt Ltd.</li>
-                                        <li>Director of Mapstring Pvt Ltd. </li>
-                                        <li>Proprietor of Glory Enterprises.</li>
-                                        <li> Trusted IT consultant and corporate trainer specializing in Java FS, Python,
-                                                Django, React, Angular,
-                                                Hadoop, Pyspark, AWS, Azure and GCP.</li>
-                                       </ul>
-                                        
-                        </div>
-                </div>
-        </div>
-     
+</main>
+               
 {% endblock %}
