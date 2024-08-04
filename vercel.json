@@ -1,14 +1,19 @@
 {
-    "builds": [
-      {
-        "src": "core/wsgi.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "core/wsgi.py"
-      }
-    ]
+  "builds": [
+    {
+      "src": "core/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }
+    
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "core/wsgi.py"
+    }
+  ],
+  "env": {
+    "COLLECTSTATIC": "python manage.py collectstatic --noinput"
   }
+}
