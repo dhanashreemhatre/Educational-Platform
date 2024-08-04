@@ -32,20 +32,20 @@ urlpatterns = [
     path("course_material/<int:id>",views.course_material,name="course_material"),
     path("dashboard/notes",views.notes,name="notes"),
     path("dashboard/tests",views.tests,name="tests"),
-    path("trainer-dashboard/",views.TrainerDashboard,name="trainer_dashboard"),
-    path("trainer-dashboard/course-material",views.TrainerCourseMaterial,name="TrainerCourseMaterial"),
-    path("trainer-dashboard/upload_quiz",views.upload_quiz,name="upload_quiz"),
-    path("handlerequest/",views.handlerequest,name="handlerequest"),
+    # path("trainer-dashboard/",views.TrainerDashboard,name="trainer_dashboard"),
+    # path("trainer-dashboard/course-material",views.TrainerCourseMaterial,name="TrainerCourseMaterial"),
+    # path("trainer-dashboard/upload_quiz",views.upload_quiz,name="upload_quiz"),
+    # path("handlerequest/",views.handlerequest,name="handlerequest"),
 
-    #admi-Quiz-creation urls
-    path('trainer-dashboard/create-quiz',views.create_quiz,name="trainer-create-quiz"),
+    # #admi-Quiz-creation urls
+    # path('trainer-dashboard/create-quiz',views.create_quiz,name="trainer-create-quiz"),
     
-    #Quiz urls
-    path("dashboard/quiz/",QuizListView.as_view(),name="quiz-list"),
-    path("dashboard/quiz/<int:module_title_id>",QuizListView.as_view(),name="quiz-list-module-title"),
-    path('dashboard/quiz/<pk>/',views.quiz_view,name='quiz-view'),
-    path('dashboard/quiz/<pk>/data/',views.quiz_data_view,name='quiz-data-view'),
-    path('dashboard/quiz/<pk>/save/',views.save_quiz_view,name='quiz-save'),
+    # #Quiz urls
+    # path("dashboard/quiz/",QuizListView.as_view(),name="quiz-list"),
+    # path("dashboard/quiz/<int:module_title_id>",QuizListView.as_view(),name="quiz-list-module-title"),
+    # path('dashboard/quiz/<pk>/',views.quiz_view,name='quiz-view'),
+    # path('dashboard/quiz/<pk>/data/',views.quiz_data_view,name='quiz-data-view'),
+    # path('dashboard/quiz/<pk>/save/',views.save_quiz_view,name='quiz-save'),
 
 
     # path("pdfgenerator/",GeneratePdf.as_view(),name="pdfgenerator"),

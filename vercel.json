@@ -12,8 +12,5 @@
       "src": "/(.*)",
       "dest": "core/wsgi.py"
     }
-  ],
-  "env": {
-    "COLLECTSTATIC": "python manage.py collectstatic --noinput"
-  }
+  ]
 }
